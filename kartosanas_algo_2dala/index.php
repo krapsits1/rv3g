@@ -123,21 +123,22 @@
         include "shell_sort.php";
 
 
-        if($_POST["inputMasivs"]){
+        if(isset($_POST["inputMasivs"])){
             $selected = $_POST["inputMasivs"];
             if($selected === "skaitlu"){
                 $array = $masivs1;  // Numbers array    
             }elseif($selected === "vardu"){
                 $array = $masivs2;  // Words array
             }
+            echo "<h1>Masīvs sākumā: </h1>";
+
+            foreach($array as $value){
+                echo $value . " ";  
+            }
         }
 
-        echo "<h1>Masīvs sākumā: </h1>";
 
-        foreach($array as $value){
-            echo $value . " ";  
-        }
-        if($_POST["inputAlgo"]){
+        if(isset($_POST["inputAlgo"])){
             $selectedAlgo = $_POST["inputAlgo"];
 
             if($selectedAlgo === "bubble"){

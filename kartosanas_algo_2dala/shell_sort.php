@@ -1,36 +1,29 @@
 <?php
-function shell_Sort($my_array)
-{
-    // Inicializēt atstarpes lielumu
-    $x = round(count($my_array) / 2);
+function shell_Sort(array $masivs): array {
+    $n = count($masivs);
+    $gap = floor($n / 2); 
     
-    // Cikls, kamēr atstarpes lielums kļūst par 0
-    while ($x > 0)
-    {
-        // Pāriet cauri masīva elementiem ar pašreizējo atstarpi
-        for ($i = $x; $i < count($my_array); $i++)
-        {
-            // Saglabāt pašreizējo elementu pagaidu mainīgajā
-            $temp = $my_array[$i];
+    while ($gap > 0) {
+        for ($i = $gap; $i < $n; $i++) {
+            $key = $masivs[$i];
             $j = $i;
-            
-            // Pārvietot masīva elementus, kas ir lielāki par temp, ar intervālu atstarpes lielumā
-            // uz pozīcijām priekšā no to pašreizējās pozīcijas
-            while ($j >= $x && $my_array[$j - $x] > $temp)
-            {
-                $my_array[$j] = $my_array[$j - $x];
-                $j -= $x;
+
+            // Shift elements that are greater than key by gap positions
+            while ($j >= $gap && $masivs[$j - $gap] > $key) {
+                $masivs[$j] = $masivs[$j - $gap];
+                $j -= $gap;
             }
-            
-            // Ievietot pagaidu mainīgo (saglabāto elementu) tā pareizajā pozīcijā
-            $my_array[$j] = $temp;
+
+            // Place key at its correct position
+            $masivs[$j] = $key;
         }
-        
-        // Samazināt atstarpes lielumu nākamajai iterācijai
-        $x = round($x / 2.2);
+
+        // Reduce gap size
+        $gap = floor($gap / 2);
     }
-    
-    // Atgriezt sakārtoto masīvu
-    return $my_array;
+
+    return $masivs;
 }
+
+
 ?>
