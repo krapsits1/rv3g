@@ -1,5 +1,5 @@
 <html>
-    <title>Emīls Vētra</titles>
+    <title>Emīls Vētra</title>
 </html>
 
 <?php
@@ -27,20 +27,22 @@ if ($xlsx = SimpleXLSX::parse('dati_masiviem.xlsx')){
             'Autors' =>$rindas[$i][1],
             'Nosaukums' =>$rindas[$i][2],
             'Cena' =>number_format($rindas[$i][5] * 1.25,2),
+            'Skaits' => $rindas[$i][4],
         );
     }
 
     //Izvadam masīvu ar 5 grāmatām
 
-    print_r($masivs);
-    // foreach ($masivs as $gramata){
-    //     echo 'ISBN: ' . $gramata['ISBN'] . '<br>';
-    //     echo 'Autors: ' . $gramata['Autors'] . '<br>';
-    //     echo 'Nosaukums: ' . $gramata['Nosaukums'] . '<br>';
-    //     echo 'Cena: ' . $gramata['Cena'] . '<br>';
-    //     echo '<br>';
+    foreach ($masivs as $gramata){
+        echo 'ISBN: ' . $gramata['ISBN'] . '<br>';
+        echo 'Autors: ' . $gramata['Autors'] . '<br>';
+        echo 'Nosaukums: ' . $gramata['Nosaukums'] . '<br>';
+        echo 'Cena: ' . $gramata['Cena'] . '<br>';
+        echo 'Skaits: ' . $gramata['Skaits'] . '<br>';
 
-    // }
+        echo '<br>';
+
+    }
 
 
 }else{
