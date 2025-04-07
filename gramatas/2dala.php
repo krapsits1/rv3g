@@ -32,7 +32,6 @@ if ($xlsx = SimpleXLSX::parse('dati_masiviem.xlsx')){
 
     //Izvadam masīvu ar 5 grāmatām
     $jaunaisFails = fopen("gramatas.csv", "w");
-    fwrite($jaunaisFails, "ISBN,Autors,Nosaukums,Cena,Skaits\n");
 
     foreach ($masivs as $gramata){
         echo 'ISBN: ' . $gramata['ISBN'] . '<br>';
